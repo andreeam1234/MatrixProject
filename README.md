@@ -84,3 +84,24 @@ SW  → Pin 2
 ### Picture of the setup
 ### Functionality video
 
+## Final Game Direction
+
+### **Sokoban on LED Matrix (with IMU/Joystick control)**  
+The final project will be a simplified Sokoban puzzle game where:
+
+- The player moves on the LED matrix  
+- Boxes can be pushed into target positions  
+- IMU sensor will be used for extended control (e.g., UNDO gesture)  
+- LCD will display game information and level stats  
+
+---
+
+## Checkpoint 2 Plan
+- Movement system for Sokoban player  
+- Box pushing logic  
+- Collision with walls  
+- First playable Sokoban level  
+  - **UNDO**
+  - **PAUSE**
+---
+
