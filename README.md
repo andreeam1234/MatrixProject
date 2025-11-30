@@ -6,6 +6,9 @@ Sokoban puzzle game implementation on 8x8 LED matrix with LCD, joystick and IMU 
 
 ## Checkpoint 1 
 
+## Task requirements
+This project is a small interactive system built with an Arduino, a joystick, an LCD screen, and an 8×8 LED matrix driven by a MAX7219. The goal was to create a menu you can scroll through using the joystick, show a short intro message at startup, and build a simple game where the player moves around a larger 16×16 “virtual map” while only seeing an 8×8 window on the LED matrix. The joystick controls both the menu and the movement, and a buzzer gives sound feedback for actions. Everything updates smoothly, and the code is organized into clear parts (input handling, rendering, game logic) so it’s easy to understand and extend later. This serves as the foundation for the full matrix game that will be developed in the next checkpoint.
+
 ## Hardware Components
 
 | Component | Model | Purpose |
@@ -82,7 +85,11 @@ SW  → Pin 2
 3. **Exit**: Hold button for 2 seconds
 
 ### Picture of the setup
+<img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/8d936e22-4c1a-4353-a416-6177b4f35e86" />
+<img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/1c8cae66-b353-4436-8fc4-2e2109590d8e" />
+
 ### Functionality video
+https://youtu.be/j4vbeKR538k?si=LQfCYmYOxDWTJvJt
 
 ## Final Game Direction
 
