@@ -1,8 +1,71 @@
-# Sokoban Matrix Game
+# Maze Runner Matrix Game
 
-## Project Description
+This repository contains the source code and documentation for my Arduino-based Matrix Project. It is a complex maze crawler game featuring an 8x8 LED Matrix for gameplay, a 16x2 LCD for the HUD/Menu, and an IMU (Accelerometer) for gesture-based mechanics.
 
-Sokoban puzzle game implementation on 8x8 LED matrix with LCD, joystick and IMU sensor.
+
+## 1. Task Requirements
+The project requirements were to create a standalone game using an Arduino, an LED Matrix, and an LCD display. Key constraints and features implemented include:
+- **Menu System:** A fully navigable menu with Start, Highscore, Settings, About, and Help sections.
+- **Game Logic:** A functional game with levels, score tracking, enemies, and win/loss states.
+- **Hardware Interaction:** Usage of a Joystick for movement and Buttons for selection.
+- **Advanced Sensor Integration:** Utilization of an MPU6050 Accelerometer for specific game mechanics ("Shake to Freeze").
+- **Data Persistence:** Saving Highscores and Settings (Name, Brightness, Sound) to EEPROM to retain data
+
+
+## 2. Picture of the Setup
+<img width="2048" height="1622" alt="image" src="https://github.com/user-attachments/assets/1d850e42-8a7b-4f02-a847-206e9bb0296c" />
+
+## 3. Functionality video
+
+
+## 4. Documentation
+
+### Introduction & Backstory
+I have always been a fan of classic dungeon crawlers and puzzle games. For this project, I wanted to recreate the feeling of exploration found in these type of games, but adapted for the limitations of an 8x8 display.
+
+The inspiration comes from games like *Pac-Man* and *The Legend of Zelda* (dungeons). However, I wanted to add a physical twist to the gameplay. Instead of just pressing buttons, I wanted the player to physically interact with the console. This led to the integration of the **MPU6050 Accelerometer**. If the player gets overwhelmed by enemies, they can physically **shake the entire console** to unleash a "shockwave" that freezes enemies for a few seconds.
+
+### Game Description
+**The Maze Runner** is a level-based game where the map (16x16) is larger than the visible screen (8x8). The player must navigate a "virtual camera" view to explore the dark maze.
+
+* **Objective:** Find the **KEY** (blinking fast) to unlock the **EXIT** (blinking slow).
+* **Enemies:** AI-controlled dots that chase the player. Speed increases with difficulty.
+* **Levels:** There are 3 distinct levels with increasing difficulty and different wall layouts.
+* **Lives:** The player starts with 3 lives. Touching an enemy results in losing a life.
+
+### How to Play
+
+1.  **Menu Navigation:**
+    * Use **Joystick Up/Down** to scroll through options.
+    * Press **Joystick Button** to select.
+    * **Long Press** Joystick Button to return to the previous menu.
+2.  **In-Game Movement:** Use the **Joystick** to move the player (the steady dot) through the maze.
+3.  **Interaction:**
+    * Walk over the **Key** to collect it.
+    * Walk into the **Exit** after collecting the key to finish the level.
+4.  **Special Ability (THE SHAKE):**
+    * If you are cornered by an enemy, **SHAKE** the controller/breadboard vigorously.
+    * The accelerometer detects the G-force and **freezes** the enemies for 3 seconds.
+    * *Note:* This has a cooldown/duration logic implemented in the code.
+
+### Used Components
+
+| Component | Role | Pin Connection (Arduino Uno) |
+| :--- | :--- | :--- |
+| **Arduino Uno** | Microcontroller | - |
+| **8x8 LED Matrix** | Main Game Display | DIN: 12, CLK: 11, CS: 10 |
+| **MAX7219 Driver** | Controls Matrix | (Integrated with Matrix) |
+| **16x2 LCD Display** | HUD (Score, Lives) & Menu | RS: 9, EN: 8, D4: 7, D5: 6, D6: 5, D7: 4 |
+| **Joystick Module** | Input (X/Y Axis + Button) | X: A0, Y: A1, SW: 2 |
+| **MPU6050** | Accelerometer (Shake Detection) | SDA: A4, SCL: A5 |
+| **Passive Buzzer** | Sound Effects | Pin 13 |
+| **Resistors/Wires** | Connections | - |
+
+### Technical Implementation Details
+
+#### The State Machine
+The code is structured around a finite state machine (`enum GameState`). This ensures the Arduino only processes logic relevant to the current screen. For example, the joystick controls the menu cursor in `STATE_MENU` but moves the player in `STATE_GAME`.
+
 
 # Checkpoint 1 
 
